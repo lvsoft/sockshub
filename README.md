@@ -1,4 +1,6 @@
-sockshub
+SocksHub
 ========
 
-a socks5 hub to a series of http proxy &amp; socks proxy, and local caches
+a socks5 hub to a series of http proxy &amp; socks proxy, and local caches.
+
+
