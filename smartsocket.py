@@ -3,8 +3,13 @@
 a wrapper for multiple socks5 proxy & http proxy
 """
 from xsocket import XSocket
+from clients import HTTPProxy, SocksProxy
+from functools import partial
 
-class SmartSocket(HTTPProxy):
+clients = [partial(HTTPProxy, ("127.0.0.1", 8080)),
+           partial(SocksProxy, ("127.0.0.1", 3125))]
+
+class SmartSocket(XSocket):
     def forward(self, dest):
         try:
             while True:

@@ -39,7 +39,7 @@ class SocksServer(StreamServer):
         #socks5 negotiation step2: specify command and destination
         ver, cmd, rsv, atype = src.unpack('BBBB', 4)
 
-        if cmd! b= 0x01:
+        if cmd != 0x01:
             src.pack('BBBBIH', 0x05, 0x07, 0x00, 0x01, 0, 0)
             return
 

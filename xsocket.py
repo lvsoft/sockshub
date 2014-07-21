@@ -1,6 +1,8 @@
 #coding: utf-8
 
 import gevent
+import struct
+from gevent import socket
 
 class XSocket(gevent.socket.socket):
     def __init__(self, socket = None, addr = None):
@@ -25,7 +27,7 @@ class XSocket(gevent.socket.socket):
     def forward(self, dest):
         try:
             while True:
-                data = self.recv(1024)
+                data = self.recv(1400)
                 if not data:
                     break
                 dest.sendall(data)
