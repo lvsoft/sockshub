@@ -59,6 +59,7 @@ class SocksServer(StreamServer):
             return
 
         try:
+            print "call proxy, host:", hostip, port
             dest = SmartSocket(addr = (hostip, port))
         except IOError, ex:
             print "%s:%d" % addr, "failed to connect to %s:%d" % (hostip, port)
@@ -85,7 +86,7 @@ class SocksServer(StreamServer):
 if __name__ == '__main__':
     import sys
     global port
-    port = 7070
+    port = 3125
     if len(sys.argv) > 1:
         port = int(sys.argv[1])
     SocksServer.start_server()

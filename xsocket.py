@@ -31,6 +31,8 @@ class XSocket(gevent.socket.socket):
                 if not data:
                     break
                 dest.sendall(data)
+        except socket.error:
+            pass
         finally:
             self.close()
             dest.close()

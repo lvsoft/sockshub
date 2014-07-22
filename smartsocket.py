@@ -6,17 +6,14 @@ from xsocket import XSocket
 from clients import HTTPProxy, SocksProxy
 from functools import partial
 
-clients = [partial(HTTPProxy, ("127.0.0.1", 8080)),
-           partial(SocksProxy, ("127.0.0.1", 3125))]
+clients = [partial(HTTPProxy, ("10.239.120.37", 911)),
+           partial(SocksProxy, ("10.7.211.16", 1080)),
+           XSocket]
 
-class SmartSocket(XSocket):
-    def forward(self, dest):
-        try:
-            while True:
-                data = self.recv(1024)
-                if not data:
-                    break
-                dest.sendall(data)
-        finally:
-            self.close()
-            dest.close()
+def SmartSocket(addr):
+    instance = clients[1]
+    return instance(addr)
+
+
+
+
